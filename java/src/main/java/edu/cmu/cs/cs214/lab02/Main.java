@@ -1,13 +1,21 @@
 package edu.cmu.cs.cs214.lab02;
 
-import edu.cmu.cs.cs214.lab02.shapes.Rectangle;
+import edu.cmu.cs.cs214.lab02.shapes.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle(2, 3);
+        Shape rectangle = new Rectangle(2, 3);
+        Shape circle = new Circle(5);
+        Shape square = new Square(4);
 
-        Renderer renderer = new Renderer(rectangle);
+        Renderer renderer = new Renderer();
+        renderer.addShape(rectangle);
+        renderer.addShape(circle);
+        renderer.addShape(square);
 
-        renderer.draw();
+        renderer.drawAll();
+        renderer.calculateTotalArea();
     }
 }

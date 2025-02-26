@@ -1,19 +1,32 @@
 package edu.cmu.cs.cs214.lab02;
 
 import edu.cmu.cs.cs214.lab02.shapes.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Renderer {
-    public Rectangle rectangle;
-    
-    Renderer(Rectangle rectangle) {
-        this.rectangle = rectangle;
+    private List<Shape> shapes;
+
+    public Renderer() {
+        shapes = new ArrayList<>();
     }
 
-    void draw() {
-        double area = rectangle.getArea();
+    public void addShape(Shape shape) {
+        shapes.add(shape);
+    }
 
-        // assume implementation
+    public void drawAll() {
+        for (Shape shape : shapes) {
+            shape.draw();
+            System.out.println("Area: " + shape.getArea());
+        }
+    }
 
-        System.out.println("Shape printed\n" + "Its area is " + area);
+    public void calculateTotalArea() {
+        double totalArea = 0;
+        for (Shape shape : shapes) {
+            totalArea += shape.getArea();
+        }
+        System.out.println("Total Area: " + totalArea);
     }
 }
